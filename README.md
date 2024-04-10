@@ -1,9 +1,11 @@
+# AI-trading-bot
+
+
 ```
-npm install
-npm run dev
+bun i
+bun run dev
 ```
 
 ```
-npm run deploy
+bun run deploy
 ```
-# AI-trading-bot
