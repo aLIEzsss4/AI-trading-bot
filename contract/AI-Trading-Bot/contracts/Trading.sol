@@ -6,6 +6,8 @@ import "./interface/IBotSwap.sol";
 import "./interface/IWETH.sol";
 
 import "@openzeppelin/contracts/utils/structs/EnumerableMap.sol";
+import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import "@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol";
 
 contract Trading is ITrading {
     using EnumerableMap for EnumerableMap.AddressToUintMap;
@@ -99,5 +101,25 @@ contract Trading is ITrading {
         strategies[_account].push(_strategy);
 
         emit PushStrategy(_account, _strategy);
+    }
+
+    function getAssets(address _account) external view returns(Asset[] memory backAssets) {
+         EnumerableMap.AddressToUintMap storage map = assets[_account];
+         address[] memory addrs = map.keys();
+         backAssets = new Asset[](addrs.length + 1);
+         uint8 i;
+         for(; i < addrs.length; i++) {
+            Asset memory asset = Asset({
+                token: addrs[i],
+                tokenName: IERC20Metadata(addrs[i]).name(),
+                amount: map.get(addrs[i])
+            });
+            backAssets[i] = asset;
+         }
+         backAssets[i] = Asset({
+                token: WETH10,
+                tokenName: "WETH",
+                amount: wethBalances[_account]
+            });
     }
 }

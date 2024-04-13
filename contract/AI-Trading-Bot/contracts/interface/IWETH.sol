@@ -1,14 +1,12 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Copyright (C) 2015, 2016, 2017 Dapphub
 // Adapted by Ethereum Community 2021
-pragma solidity ^0.8.24;
-
-import "./IERC20.sol";
+pragma solidity 0.8.24;
 
 /// @dev Wrapped Ether v10 (WETH10) is an Ether (ETH) ERC-20 wrapper. You can `deposit` ETH and obtain a WETH10 balance which can then be operated as an ERC-20 token. You can
 /// `withdraw` ETH from WETH10, which will then burn WETH10 token in your wallet. The amount of WETH10 token in any wallet is always identical to the
 /// balance of ETH deposited minus the ETH withdrawn with that specific wallet.
-interface IWETH10 is IERC20 {
+interface IWETH10 {
 
     /// @dev Returns current amount of flash-minted WETH10 token.
     function flashMinted() external view returns(uint256);

@@ -9,9 +9,17 @@ interface ITrading {
         uint256 timestamp; 
     }
 
-    function setKeeper(address keeper, bool alive) external;
+    struct Asset {
+        address token;
+        string tokenName;
+        uint256 amount;
+    }
+
     function deposit() external payable;
     function withdrawAfterSell() external;
+    function getAssets(address _account) external view returns(Asset[] memory backAssets);
+
+    function setKeeper(address keeper, bool alive) external;
     function trade() external;
     function pushStrategy(address _account, Strategy memory _strategy) external;
 }
