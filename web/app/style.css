@@ -1,0 +1,36 @@
+.left-style {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+.middle-style {
+    flex: 1;
+    border: 1px solid #ebedf0;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+}
+.right-style {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.dynamic-operation {
+    padding: 30px;
+    width: 100%;
+    height: 80%;
+    border-bottom: 1px solid #ebedf0;
+}
+
+.dynamic-operation > div{
+    margin-bottom: 20px;
+}
+.link-title-style {
+    width: 100px;
+    padding: 3px 5px;
+    margin-bottom: 8px;
+    font-size: 20px;
+    background-color: rgb(121,192,255);
+    
+}
