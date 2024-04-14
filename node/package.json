@@ -1,10 +1,12 @@
 {
   "scripts": {
     "dev": "wrangler dev src/index.ts",
-    "deploy": "wrangler deploy --minify src/index.ts"
+    "deploy": "wrangler deploy --minify src/index.ts",
+    "test":"bun test index.test.ts"
   },
   "dependencies": {
-    "hono": "^4.2.3"
+    "hono": "^4.2.3",
+    "openai": "^4.33.1"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20240403.0",
