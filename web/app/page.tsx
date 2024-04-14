@@ -61,6 +61,7 @@ export default function Home() {
               {tokenList.map((o) => (
                 <TokenBlock
                   token={o}
+                  key={o}
                   isSelected={currentToken === o}
                   onClick={(val) => setCurrentToken(o)}
                 />
@@ -80,6 +81,7 @@ export default function Home() {
               {optList.map((o) => (
                 <TokenBlock
                   token={o}
+                  key={o}
                   isSelected={currentOpt === o}
                   onClick={(val) => setCurrentOpt(o)}
                 />
