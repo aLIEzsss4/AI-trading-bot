@@ -23,8 +23,6 @@
 .middle-style {
     flex: 1;
     border-radius: 4px;
-    display: flex;
-    justify-content: center;
 }
 .right-style {
     padding: 30px;
@@ -36,31 +34,29 @@
 .dynamic-operation {
     padding: 30px;
     width: 100%;
-    height: 80%;
     color: #fff;
 }
 
 .dynamic-operation > div{
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 .link-title-style {
     text-align: center;
     color: #375fc4;
-    width: 100px;
+    width: 130px;
     padding: 3px 5px;
-    margin-bottom: 2rem;
+    margin-bottom: 12px;
     font-size: 20px;
     background-color: rgb(121,192,255);
 }
 .token-title-style {
     text-align: center;
-    width: 100px;
+    width: 130px;
     padding: 3px 5px;
-    margin-bottom: 8px;
     font-size: 20px;
     background-color: rgb(121,192,255); 
-    margin-bottom: 2rem;
-    margin-top: 4rem;
+    margin-bottom: 12px;
+    margin-top: 32px;
     color: #375fc4;
 }
 
@@ -68,6 +64,7 @@
     display: flex;
     margin: 45px;
     margin-top: 20px;
+    margin-bottom: 12px;
     border-top: 1px solid #ebedf0;
     border-left: 1px solid #ebedf0;
     background-image: url('./image/WechatIMG224.jpg');
@@ -83,12 +80,11 @@
 }
 
 .opt-title-style {
-    margin-top: 4rem;
-    margin-bottom: 2rem;   
+    margin-top: 32px;
+    margin-bottom: 12px;   
     text-align: center;
-    width: 100px;
+    width: 130px;
     padding: 3px 5px;
-    margin-bottom: 8px;
     font-size: 20px;
     background-color: rgb(121,192,255); 
     color: #375fc4;
@@ -103,4 +99,25 @@
   color: #ac44d1;  
   background-color: #edbbff;
   cursor: pointer;
+}
+
+.right-opt {
+  border-bottom: 1px solid rgb(77, 89, 147);  
+  padding-bottom: 15px;
+}
+
+.opt-text-container {
+    margin-top: 10px;
+}
+
+.opt-item {
+    height: 30px;
+}
+
+.empty-opt {
+    min-height: 400px;
+}
+
+.table-container {
+    background-color: rgb(43, 51, 78);
 }
