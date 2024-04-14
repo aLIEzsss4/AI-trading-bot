@@ -1,0 +1,19 @@
+.block-style {
+    display: flex;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    padding: 2px 5px;
+    background-color: rgb(72,114,140);
+}
+.selected-style {
+    display: flex;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    padding: 2px 5px;
+    background-color: rgba(72,114,140,.8);
+    border: 2px solid #a1eeff;
+}
