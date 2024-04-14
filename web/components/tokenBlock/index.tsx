@@ -1,4 +1,4 @@
-import "./style.css";
+
 interface TokenInterface {
   token: string;
   isSelected?: boolean;
