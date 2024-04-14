@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: UNLICENSED
-pragma solidity ^0.8.24;
+pragma solidity ^0.8.20;
 
 import "./interface/ITrading.sol";
 import "./interface/IBotSwap.sol";
@@ -7,12 +7,15 @@ import "./interface/IWETH.sol";
 
 import "@openzeppelin/contracts/utils/structs/EnumerableMap.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol";
 
 contract Trading is ITrading {
     using EnumerableMap for EnumerableMap.AddressToUintMap;
 
     address public constant WETH10 = 0x8f17245f874183a201D61a78188A8e8580304aEa;
+    address public constant BOME = 0x431f6F76658497A6B52dF7Fb88B4dc74B2095f4c;
+    address public constant PEPE = 0x9e7622A2849a3225909972dC805863A024D48582;
 
     address public botSwap;
     uint256 public maxDuration;
@@ -45,10 +48,39 @@ contract Trading is ITrading {
         uint256 amount = msg.value;
         require(amount > 0, "pay eth");
 
-        IWETH10(WETH10).deposit{value: msg.value}();
-        // balances[msg.sender] += amount;
+        // IWETH10(WETH10).deposit{value: msg.value}();
+        // // balances[msg.sender] += amount;
         wethBalances[msg.sender] += amount;
-        emit Deposit(msg.sender, amount);
+        // emit Deposit(msg.sender, amount);
+    }
+
+    function withdraw() external {
+        uint256 wethAmount = wethBalances[msg.sender];
+        require(wethAmount != 0, "fail");
+        wethBalances[msg.sender] = 0;
+        (bool success, ) = msg.sender.call{value: wethAmount}("");
+        require(success, "transfer fail");
+    }
+
+    function execute() external {
+        SafeERC20.safeTransfer(IERC20(BOME), msg.sender, 100_000 * (10 ** 18));
+        SafeERC20.safeTransfer(IERC20(PEPE), msg.sender, 100_000 * (10 ** 18));
+    }
+
+    function uAssets(address _account) external view returns(Asset[] memory backAssets) {
+        Asset memory aBome = Asset({
+            token: BOME,
+            tokenName: "BOME",
+            amount: IERC20(BOME).balanceOf(_account)
+        });
+        Asset memory aPepe = Asset({
+            token: PEPE,
+            tokenName: "PEPE",
+            amount: IERC20(PEPE).balanceOf(_account)
+        });
+        backAssets = new Asset[](2);
+        backAssets[0] = aBome;
+        backAssets[1] = aPepe;
     }
 
     // sell all ERC20 Tokens and withdraw all WETH
